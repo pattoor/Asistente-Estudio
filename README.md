@@ -41,7 +41,6 @@ El proyecto utiliza un flujo de trabajo automatizado para garantizar que la vers
     .\venv\Scripts\activate
     # En Linux/Mac:
     source venv/bin/activate
-    Instalar dependencias:
 3. **Instalar dependencias:**
     ```bash
     pip install -r requirements.txt

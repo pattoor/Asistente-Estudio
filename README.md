@@ -6,6 +6,7 @@ colorTo: indigo
 sdk: docker
 pinned: false
 ---
+
 # 📚 Multi-PDF Private RAG Study Assistant
 
 ### 🎯 Objetivo
@@ -34,21 +35,21 @@ El proyecto utiliza un flujo de trabajo automatizado para garantizar que la vers
    git clone https://github.com/pattoor/RAG-Privado-Estudio.git
    cd RAG-Privado-Estudio
 2. **Crear entorno virtual(opcional):**
-  ```bash
-  python -m venv venv
-  # En Windows:
-  .\venv\Scripts\activate
-  # En Linux/Mac:
-  source venv/bin/activate
-  Instalar dependencias:
+    ```bash
+    python -m venv venv
+    # En Windows:
+    .\venv\Scripts\activate
+    # En Linux/Mac:
+    source venv/bin/activate
+    Instalar dependencias:
 3. **Instalar dependencias:**
-  ```bash
-  pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
 4. **Configurar API Key:**
-  Crea un archivo .env o ingresa tu clave directamente en la interfaz de la App.
+    Crea un archivo .env o ingresa tu clave directamente en la interfaz de la App.
 5. **Correr WebApp:**
-  ```bash
-  streamlit run app.py
+    ```bash
+    streamlit run app.py
 
 #### Tips de Uso
 Chunking: El sistema divide los textos en pedazos de 1000 caracteres. Si tus apuntes tienen tablas complejas, probá reduciendo este tamaño.
@@ -59,4 +60,4 @@ Contexto: Si la IA no responde algo, verificá que el PDF sea legible (que no se
 Podés probar la aplicación en vivo aquí: [https://huggingface.co/spaces/patoor/estudio-rag-facu]
 
 ---
-AUTHOR: Patricio Romero || Software Dev | AI Automation - API - Data - QA | System Engineering Student 
+AUTHOR: Patricio Romero | System Engineering Student 

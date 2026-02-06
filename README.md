@@ -48,12 +48,18 @@ El proyecto utiliza un flujo de trabajo automatizado para garantizar que la vers
     Crea un archivo .env o ingresa tu clave directamente en la interfaz de la App.
 5. **Correr WebApp:**
     ```bash
-    streamlit run app.py
+    streamlit run src/app.py 
 
 #### Tips de Uso
 Chunking: El sistema divide los textos en pedazos de 1000 caracteres. Si tus apuntes tienen tablas complejas, probá reduciendo este tamaño.
 
 Contexto: Si la IA no responde algo, verificá que el PDF sea legible (que no sea una imagen escaneada sin OCR).
+
+#### Notas Tecnicas
+* **Hugging Face Spaces:** La plataforma requiere obligatoriamente que la aplicación escuche en el puerto `7860`. Esto está configurado mediante variables de entorno (`ENV`) y el punto de entrada en el `Dockerfile`. 
+*  **Ejecución Local:** Al correr el proyecto con `streamlit run src/app.py`, Streamlit usará por defecto el puerto `8501`. Si deseas replicar exactamente el entorno de producción en tu PC, utiliza:
+    ```bash
+    streamlit run src/app.py --server.port 7860
 
 ## 🌐 Live Demo
 Podés probar la aplicación en vivo aquí: [https://huggingface.co/spaces/patoor/estudio-rag-facu]

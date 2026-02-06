@@ -1,93 +1,62 @@
-# 🧠 Internal AI Assistant with Private Documents (RAG)
+---
+title: Estudio RAG Facu
+emoji: 📚
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+# 📚 Multi-PDF Private RAG Study Assistant
 
-AI assistant designed to help teams quickly find information inside private documentation using Retrieval-Augmented Generation (RAG).
+### 🎯 Objetivo
+Este proyecto permite a estudiantes cargar múltiples archivos PDF de estudio y realizar consultas semánticas utilizando Inteligencia Artificial. A diferencia de un chat convencional, este sistema utiliza **RAG (Retrieval-Augmented Generation)** para responder basándose exclusivamente en los documentos proporcionados, evitando alucinaciones y manteniendo la privacidad de los datos.
 
-The system runs locally (offline-capable), preserves data privacy, and can be deployed as an internal service.
+### 🛠️ Tecnologías y ¿Por qué?
+* **Llama 3.3 (via Groq):** Elegido como el "cerebro" (LLM) por su increíble velocidad de inferencia y capacidad de razonamiento gratuita.
+* **LangChain (LCEL):** Utilizado para orquestar la lógica del RAG mediante cadenas modulares, permitiendo una fácil escalabilidad.
+* **FAISS (Facebook AI Similarity Search):** Se seleccionó como base de datos vectorial por ser extremadamente ligera y evitar dependencias complejas de compilación (como C++) en sistemas Windows.
+* **HuggingFace Embeddings (`all-MiniLM-L6-v2`):** Modelo de embeddings que corre localmente para transformar texto en vectores sin costo de API.
+* **Streamlit:** Interfaz de usuario rápida y eficiente para una experiencia de chat intuitiva.
+
+## 🔄 Arquitectura de Despliegue (CI/CD)
+
+El proyecto utiliza un flujo de trabajo automatizado para garantizar que la versión en producción siempre esté sincronizada:
+
+1. **Desarrollo Local:** Cambios en la lógica del RAG o la interfaz en VS Code.
+2. **Control de Versiones:** `git push origin main` hacia GitHub.
+3. **GitHub Actions:** Un runner de Ubuntu se activa automáticamente, autentica con Hugging Face mediante un `HF_TOKEN` y realiza un `git push --force` al Space.
+4. **Hugging Face Spaces:** Detecta el cambio en el `Dockerfile`, recompila la imagen y despliega la nueva versión en minutos.
+
+### 🚀 Cómo Correr Localmente
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/pattoor/RAG-Privado-Estudio.git
+   cd RAG-Privado-Estudio
+2. **Crear entorno virtual(opcional):**
+  ```bash
+  python -m venv venv
+  # En Windows:
+  .\venv\Scripts\activate
+  # En Linux/Mac:
+  source venv/bin/activate
+  Instalar dependencias:
+3. **Instalar dependencias:**
+  ```bash
+  pip install -r requirements.txt
+4. **Configurar API Key:**
+  Crea un archivo .env o ingresa tu clave directamente en la interfaz de la App.
+5. **Correr WebApp:**
+  ```bash
+  streamlit run app.py
+
+#### Tips de Uso
+Chunking: El sistema divide los textos en pedazos de 1000 caracteres. Si tus apuntes tienen tablas complejas, probá reduciendo este tamaño.
+
+Contexto: Si la IA no responde algo, verificá que el PDF sea legible (que no sea una imagen escaneada sin OCR).
+
+## 🌐 Live Demo
+Podés probar la aplicación en vivo aquí: [https://huggingface.co/spaces/patoor/estudio-rag-facu]
 
 ---
-
-## 🚀 What problem does this solve?
-
-Teams waste time:
-- searching internal docs
-- answering repetitive questions
-- onboarding new members
-
-This assistant:
-- searches private documents semantically
-- answers questions grounded only in internal data
-- reduces time spent browsing documentation
-
----
-
-## 🏗️ Architecture Overview
-
-User → FastAPI API → RAG Pipeline  
-- Document Loader  
-- Text Splitter  
-- Embeddings  
-- Vector Database  
-- Local LLM  
-
----
-
-## 🧩 Tech Stack
-
-- **Python**
-- **FastAPI** – backend API
-- **LangChain** – RAG orchestration
-- **FAISS** – vector database
-- **Ollama** – local LLM runtime
-  - LLM: LLaMA / Mistral
-  - Embeddings: nomic-embed-text
-- **Docker** – containerized deployment
-
----
-
-## 🔒 Privacy First
-
-- No external APIs required
-- Documents never leave the local environment
-- Suitable for internal company data
-
----
-
-## 📁 Project Structure
-
----
-
-## ⚙️ How it works
-
-1. Documents are loaded and split into chunks  
-2. Chunks are converted into embeddings  
-3. Embeddings are stored in a vector database  
-4. User queries retrieve relevant chunks  
-5. The LLM generates grounded answers  
-
----
-
-## 📌 Use cases
-
-- Internal documentation assistant
-- Knowledge base search
-- Onboarding support
-- Technical Q&A for teams
-
----
-
-## 🧪 Status
-
-🚧 Work in progress  
-Next steps:
-- API endpoints
-- Docker setup
-- Agentic extension (LangGraph)
-
----
-
-## 👤 Author. Patricio Romero
-
-Built by an AI Engineer focused on:
-- GenAI systems
-- Agentic workflows
-- Production-ready AI solutions
+AUTHOR: Patricio Romero || Software Dev | AI Automation - API - Data - QA | System Engineering Student 

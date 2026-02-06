@@ -1,0 +1,18 @@
+# Secretos
+.env
+
+# Entorno Virtual
+venv/
+env/
+.venv/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# Temporales de PDF
+temp_*.pdf
+
+# Config de editores
+.vscode/
+.idea/

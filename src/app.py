@@ -42,9 +42,9 @@ with st.sidebar:
         if st.session_state.message_count < MAX_FREE_MESSAGES:
             active_api_key = author_key
             restantes = MAX_FREE_MESSAGES - st.session_state.message_count
-            st.info(f"Usando cuota de cortesía. Consultas restantes: {restantes}")
+            st.info(f"Usando cuota de la demo. Consultas restantes: {restantes}")
         else:
-            st.warning("⚠️ Cuota de cortesía agotada.")
+            st.warning("⚠️ Cuota de la demo agotada.")
             st.info("Para continuar, ingresa tu propia API Key de Groq.")
             st.link_button("Obtener API Key gratis", "https://console.groq.com/keys")
     
@@ -104,7 +104,7 @@ else:
                 
                 # Verificamos si aún tiene cuota antes de procesar
                 if not user_key and st.session_state.message_count >= MAX_FREE_MESSAGES:
-                    st.error("Límite de cortesía alcanzado. Por favor, ingresa tu API Key en la barra lateral.")
+                    st.error("Límite de demo alcanzado. Por favor, ingresa tu API Key en la barra lateral.")
                 else:
                     # Añadir pregunta del usuario al chat
                     st.session_state.messages.append({"role": "user", "content": prompt_text})
